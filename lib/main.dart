@@ -1,7 +1,6 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/foundation.dart';
-import 'package:quickbird/presentation/ui/resources/app_colors.dart';
 import 'package:quickbird/presentation/ui/screens/home_screen.dart';
 
 const String appTitle = "QuickBird - Instagram Profile";
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-      title: "QuickBird - Instagram User App",
+      title: appTitle,
       debugShowCheckedModeBanner: false,
       home: NavigationView(
         content: NavigationBody(

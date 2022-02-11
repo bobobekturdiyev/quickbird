@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickbird/domain/usecases/user/user_use_case.dart';
 import 'package:quickbird/presentation/ui/resources/styles.dart';
@@ -43,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 4,
                 ),
                 Text(
-                  state is Loaded ? state.user.username : "-",
+                  state is Loaded ? "@${state.user.username}" : "-",
                   style: Styles.getUsernameStyle(),
                 ),
                 const Padding(
@@ -99,17 +100,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         width: 8,
                       ),
-                      Button(
-                        child: const Text('Load Data'),
-                        // Set onPressed to null to disable the button
-                        onPressed: () {
-                          if (state is! Loading) {
-                            print('button pressed');
-                            context
-                                .read<HomeScreenCubit>()
-                                .loadUser(usernameController.text);
-                          }
-                        },
+                      Visibility(
+                        visible: state is! Loading,
+                        child: Button(
+                          child: const Text('Load Data'),
+                          // Set onPressed to null to disable the button
+                          onPressed: () {
+                            var username = usernameController.text;
+                            if (state is! Loading && username.isNotEmpty) {
+                              print('button pressed');
+                              context
+                                  .read<HomeScreenCubit>()
+                                  .loadUser(username);
+                              usernameController.text = "";
+                            }
+                          },
+                        ),
+                        replacement: const CupertinoActivityIndicator(),
                       ),
                     ],
                   ),

@@ -8,6 +8,6 @@ This is a small windows application created in the flutter
 
 App can obtain the main information from the instagram account of whose username is entered.
 
-![alt text](https://github.com/bobobekturdiyev/quickbird/assets/images/flutter.jpg?raw=true)
+![alt text](https://github.com/bobobekturdiyev/quickbird/blob/main/assets/images/flutter.jpg?raw=true)
 
 Created by Bobobek Turdiev

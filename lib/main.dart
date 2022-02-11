@@ -1,7 +1,8 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/foundation.dart';
-import 'package:quickbird/presentation/ui/screens/home_screen.dart';
+import 'package:quickbird/presentation/di/injector.dart';
+import 'package:quickbird/presentation/ui/screens/home/home_screen.dart';
 
 const String appTitle = "QuickBird - Instagram Profile";
 
@@ -17,9 +18,9 @@ bool get isDesktop {
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
-
   if (isDesktop) {
+    runApp(const Injector(child: MyApp()));
+
     doWhenWindowReady(() {
       final win = appWindow;
       win.minSize = const Size(410, 540);

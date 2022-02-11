@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:quickbird/domain/entities/user/user.dart';
@@ -21,10 +20,6 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       User user = await _userUseCase.getUserData(username);
       emit(Loaded(user: user));
     } catch (e) {
-      if (e is DioError) {
-        print("it is dio error");
-      }
-      print(e);
       emit(HomeScreenInitial());
     }
   }
